@@ -19,4 +19,4 @@ const taskSchema: Schema = new Schema(
     { timestamps: true }
 )
 
-export default model<ITask>("Todo", taskSchema)
+export default model<ITask>("Task", taskSchema)

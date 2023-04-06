@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TaskItem from './components/TaskItem';
 import AddTask from './components/AddTask';
 import { getTasks, addTask, updateTask, deleteTask } from './api';
+import { Container, Typography } from '@mui/material';
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);
@@ -53,8 +54,10 @@ const App: React.FC = () => {
   };
 
   return(
-    <main className='App'>
-      <h1>My Tasks</h1>
+    <Container maxWidth="sm" sx={{textAlign: 'center'}}>
+      <Typography variant="h3" component="h1" sx={{marginTop: '2rem', marginBottom: '2rem'}}>
+        My Tasks
+      </Typography>
       <AddTask saveTask={handleSaveTask} />
       {
         tasks.map((task: ITask) => (
@@ -66,7 +69,7 @@ const App: React.FC = () => {
           />
         ))
       }
-    </main>
+    </Container>
   )
 }
 

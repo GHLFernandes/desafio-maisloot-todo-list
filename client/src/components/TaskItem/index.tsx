@@ -1,35 +1,40 @@
 import React from 'react';
+import { Button, Card, CardContent, Typography } from '@mui/material';
 
 type Props = TaskProps & {
-    updateTask: (task: ITask) => void
-    deleteTask: (_id: string) => void
-}
+  updateTask: (task: ITask) => void;
+  deleteTask: (_id: string) => void;
+};
 
-const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask}) => {
-    const checkTask: string = task.status ? 'done' : '';
+const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask }) => {
+  const checkTask: string = task.status ? 'done' : '';
 
   return (
-    <div className='task-card'>
-        <div className='txt'>
-            <h1 className={checkTask}>{task.task}</h1>
-            <span className={checkTask}>{task.description}</span>
+    <Card variant="outlined" sx={{ maxWidth: 500, mb: 2 }}>
+      <CardContent>
+        <div className="txt">
+          <Typography variant="h5" component="h2" className={checkTask}>
+            {task.task}
+          </Typography>
+          <Typography variant="body2" component="p" className={checkTask}>
+            {task.description}
+          </Typography>
         </div>
         <div className="btn">
-            <button 
-                onClick={() => updateTask(task)}
-                className={task.status ? 'hide-btn' : 'done-btn'}
-            >
-                Done
-            </button>
-            <button
-                onClick={() => deleteTask(task._id)}
-                className='delete-btn'
-            >
-                Delete
-            </button>
+          <Button
+            onClick={() => updateTask(task)}
+            variant="contained"
+            className={task.status ? 'hide-btn' : 'done-btn'}
+          >
+            Done
+          </Button>
+          <Button onClick={() => deleteTask(task._id)} variant="outlined">
+            Delete
+          </Button>
         </div>
-    </div>
-  )
-}
+      </CardContent>
+    </Card>
+  );
+};
 
 export default TaskItem;

@@ -7,7 +7,7 @@ const app: Express = express();
 
 const corsOptions = {
   origin: 'https://desafio-maisloot-todo-list.vercel.app',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200 
 }
 
 app.use(cors(corsOptions));

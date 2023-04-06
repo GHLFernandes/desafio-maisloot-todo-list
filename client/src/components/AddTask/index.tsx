@@ -20,7 +20,7 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     saveTask(e, data);
-    setData({ ...data, task: '', description: '' });
+    setData({ _id: '', task: '', description: '', status: '' });
   };
 
   return (

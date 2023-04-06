@@ -45,11 +45,12 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask }) => {
                 onClick={() => updateTask(task)}
                 variant="contained"
                 className="done-btn"
+                sx={{ marginRight: '20px', marginTop: '20px' }}
               >
                 Done
               </Button>
             )}
-            <Button onClick={() => deleteTask(task._id)} variant="outlined">
+            <Button onClick={() => deleteTask(task._id)} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
               Delete
             </Button>
           </div>

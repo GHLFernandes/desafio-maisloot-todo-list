@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const url: string = 'https://desafio-maisloot-todo-list-server.vercel.app/';
+const url: string = 'https://desafio-maisloot-todo-list-server.vercel.app';
 
 export const getTasks = async (): Promise<AxiosResponse<ApiData>> =>{
     try{

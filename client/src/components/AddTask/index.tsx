@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-type Props = TaskProps & {
+type Props = {
    saveTask: (e: React.FormEvent, formData: ITask | any) => void
 }
 
@@ -15,9 +15,7 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
    }
 
   return (
-    <form className='taskForm' 
-        onSubmit={(e) => saveTask(e, data)}
-    >
+    <form className='taskForm' onSubmit={(e) => saveTask(e, data)} >
         <div>
             <div>
                 <label htmlFor='task'>Task</label>
@@ -28,11 +26,11 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
                 />
             </div>
             <div>
-                <label htmlFor='desc'>Description</label>
+                <label htmlFor='description'>Description</label>
                 <input 
                     type='text'
                     onChange={handleDataForm}
-                    id='desc'
+                    id='description'
                 />
             </div>
         </div>

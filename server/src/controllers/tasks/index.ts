@@ -16,6 +16,10 @@ const addTask = async (req: Request, res: Response): Promise<void> => {
     try{
         const body = req.body as Pick<ITask, "task" | "status" | "description">;
 
+        if (!body || !body.task) {
+            throw new Error("Task field is missing or undefined");
+          }
+
         const task: ITask = new Task({
             task: body.task,
             status: body.status,

@@ -20,11 +20,11 @@ const App: React.FC = () => {
     e.preventDefault();
 
     addTask(dataForm)
-      .then(({ status, data }) => {
-        if(status !== 201){
+      .then((response) => {
+        if(response.status !== 201){
           throw new Error('Error! Task not saved!');
         }
-        setTasks(data.tasks);
+        setTasks(response.data.tasks);
       })
       .catch(error => console.log(error));
   };

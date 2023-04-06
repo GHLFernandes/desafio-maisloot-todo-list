@@ -17,6 +17,12 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
 
   const isDataEmpty = Object.keys(data).length === 0;
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    saveTask(e, data);
+    setData({ ...data, task: '', description: '' });
+  };
+
   return (
     <form
       style={{
@@ -24,7 +30,7 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
         flexDirection: 'column',
         alignItems: 'center',
       }}
-      onSubmit={(e) => saveTask(e, data)}
+      onSubmit={handleSubmit}
     >
       <div
         style={{

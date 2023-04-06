@@ -1,10 +1,20 @@
 import React from 'react';
 import { Button, Card, CardContent, Typography } from '@mui/material';
+import styled from 'styled-components';
 
 type Props = TaskProps & {
   updateTask: (task: ITask) => void;
   deleteTask: (_id: string) => void;
 };
+
+const DoneButton = styled(Button)`
+  background-color: green;
+  color: white;
+
+  .hide-btn{
+    display: none;
+  }
+`;
 
 const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask }) => {
   const checkTask: string = task.status ? 'done' : '';
@@ -21,13 +31,13 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask }) => {
           </Typography>
         </div>
         <div className="btn">
-          <Button
+          <DoneButton
             onClick={() => updateTask(task)}
             variant="contained"
             className={task.status ? 'hide-btn' : 'done-btn'}
           >
             Done
-          </Button>
+          </DoneButton>
           <Button onClick={() => deleteTask(task._id)} variant="outlined">
             Delete
           </Button>

@@ -1,5 +1,5 @@
 import { Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 type Props = {
   saveTask: (e: React.FormEvent, formData: ITask | any) => void;
@@ -7,6 +7,7 @@ type Props = {
 
 const AddTask: React.FC<Props> = ({ saveTask }) => {
   const [data, setData] = useState<ITask | {}>({});
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleDataForm: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
     setData({
@@ -20,7 +21,8 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     saveTask(e, data);
-    setData({ _id: '', task: '', description: '', status: '' });
+    setData({ ...data, task: '', description: '' });
+    formRef.current?.reset();
   };
 
   return (
@@ -31,6 +33,7 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
         alignItems: 'center',
       }}
       onSubmit={handleSubmit}
+      ref={formRef}
     >
       <div
         style={{

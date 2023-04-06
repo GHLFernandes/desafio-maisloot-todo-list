@@ -55,7 +55,7 @@ const App: React.FC = () => {
 
   return(
     <Container maxWidth="sm" sx={{textAlign: 'center'}}>
-      <Typography variant="h3" component="h1" sx={{marginTop: '2rem', marginBottom: '2rem'}}>
+      <Typography variant="h3" component="h2" sx={{marginTop: '2rem', marginBottom: '2rem'}}>
         My Tasks
       </Typography>
       <AddTask saveTask={handleSaveTask} />

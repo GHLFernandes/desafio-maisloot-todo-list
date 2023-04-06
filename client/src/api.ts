@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const url: string = 'https://desafio-maisloot-todo-list-server-7gqt5yfx9-ghlfernandes.vercel.app/';
+const url: string = 'https://desafio-maisloot-todo-list-server-7gqt5yfx9-ghlfernandes.vercel.app';
 
 export const getTasks = async (): Promise<AxiosResponse<ApiData>> =>{
     try{
@@ -27,35 +27,6 @@ export const addTask = async (formData: ITask): Promise<AxiosResponse<ApiData>> 
         throw new Error(error);
     }
 }
-
-// export const addTask = async (formData: ITask): Promise<{ status: number, data: ApiData }> => {
-//     try {
-//         const task: Omit<ITask, '_id'> = {
-//           task: formData.task,
-//           description: formData.description,
-//           status: false,
-//         };
-    
-//         const saveTask: AxiosResponse<ApiData> = await axios.post(`${url}/add-task`, task);
-    
-//         return { status: saveTask.status, data: saveTask.data };
-//       } catch(error: any) {
-//         throw new Error(error);
-//       }
-// }
-
-// export const addTask = async (task: ITask) => {
-//     try {
-//       const response = await axios.post('/add-task', task, {
-//         headers: {
-//           'Content-Type': 'application/json'
-//         }
-//       });
-//       console.log(response.data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
 
 export const updateTask = async (task: ITask): Promise<AxiosResponse<ApiData>> => {
     try{

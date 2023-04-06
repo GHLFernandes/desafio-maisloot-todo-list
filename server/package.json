@@ -2,7 +2,7 @@
     "name": "todo-node-api",
     "version": "1.0.0",
     "description": "To Do List API",
-    "main": "dist/js/app.js",
+    "main": "index.js",
     "author": "Gabriel Fernandes",
     "license": "MIT",
     "dependencies": {

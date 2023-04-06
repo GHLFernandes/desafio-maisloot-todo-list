@@ -12,7 +12,7 @@
         "typescript": "^5.0.3"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && echo 'Build complete'",
         "start": "node dist/js/app.js"
     },
     "build": {

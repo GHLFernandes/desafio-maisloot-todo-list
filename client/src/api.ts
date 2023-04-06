@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const url: string = 'http://localhost:8080';
+const url: string = 'https://desafio-maisloot-todo-list-server-7gqt5yfx9-ghlfernandes.vercel.app/';
 
 export const getTasks = async (): Promise<AxiosResponse<ApiData>> =>{
     try{

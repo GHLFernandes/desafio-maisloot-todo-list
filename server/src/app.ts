@@ -26,7 +26,7 @@ mongoose.connect(uri, {
   } as ConnectOptions)
     .then(() => {
         app.listen(PORT, () => 
-            console.log(`Server running on http://localhost:${PORT}`)
+            console.log(`Server running on https://desafio-maisloot-todo-list-server-7gqt5yfx9-ghlfernandes.vercel.app:${PORT}`)
         )
     })
     .catch(error => {

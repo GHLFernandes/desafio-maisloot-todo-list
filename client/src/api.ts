@@ -34,7 +34,7 @@ export const updateTask = async (task: ITask): Promise<AxiosResponse<ApiData>> =
             status: true,
         }
 
-        const updateTask: AxiosResponse<ApiData> = await axios.put(`${url}/edit-task/${task._id}`, taskToUpdate);
+        const updateTask: AxiosResponse<ApiData> = await axios.put(`${url}/update-task/${task._id}`, taskToUpdate);
 
         return updateTask;
     }catch(error: any){

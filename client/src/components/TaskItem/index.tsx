@@ -10,7 +10,7 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask }) => {
   const checkTask: string = task.status ? 'done' : '';
 
   return (
-    <Card variant="outlined" sx={{ maxWidth: 500, mb: 2 }}>
+    <Card variant="outlined" sx={{ maxWidth: 500, my: 2 }}>
       <CardContent>
         <div className="txt">
           <Typography variant="h5" component="h2" className={checkTask}>

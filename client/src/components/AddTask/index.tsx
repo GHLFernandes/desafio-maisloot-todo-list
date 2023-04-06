@@ -1,56 +1,64 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 type Props = {
-   saveTask: (e: React.FormEvent, formData: ITask | any) => void
-}
+  saveTask: (e: React.FormEvent, formData: ITask | any) => void;
+};
 
 const AddTask: React.FC<Props> = ({ saveTask }) => {
-   const [data, setData] = useState<ITask | {}>();
+  const [data, setData] = useState<ITask | {}>({});
 
-   const handleDataForm = (e: React.FormEvent<HTMLInputElement>): void => {
+  const handleDataForm: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
     setData({
-        ...data,
-        [e.currentTarget.id]: e.currentTarget.value,
+      ...data,
+      [e.currentTarget.id]: e.currentTarget.value,
     });
-   }
+  };
+
+  const isDataEmpty = Object.keys(data).length === 0;
 
   return (
-    <>
-        <Box
-            component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
-            
-            autoComplete="off"
-            onSubmit={(e) => saveTask(e, data)} 
-            >
-            <div>
-                <TextField 
-                    required
-                    id="task" 
-                    label="Task" 
-                    variant="outlined" 
-                    size="small"
-                    onChange={(e: React.FormEvent) => handleDataForm}
-                />
-            </div>
-            <div>
-                <TextField 
-                    required
-                    id="description" 
-                    label="Description" 
-                    variant="outlined" 
-                    size="small"
-                    onChange={(e: React.FormEvent) => handleDataForm}
-                />
-
-            </div>
-        </Box>
-        <Button variant="outlined" >Add Task</Button>
-</>
-  )
-}
+    <form
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+      onSubmit={(e) => saveTask(e, data)}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: '16px',
+        }}
+      >
+        <TextField
+          label="Task"
+          variant="outlined"
+          onChange={handleDataForm}
+          id="task"
+        />
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: '16px',
+        }}
+      >
+        <TextField
+          label="Description"
+          variant="outlined"
+          onChange={handleDataForm}
+          id="description"
+        />
+      </div>
+      <Button disabled={isDataEmpty} type="submit" variant="contained">
+        Add Task
+      </Button>
+    </form>
+  );
+};
 
 export default AddTask;

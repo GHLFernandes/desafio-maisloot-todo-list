@@ -1,3 +1,4 @@
+import { Box, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 type Props = {
@@ -15,27 +16,40 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
    }
 
   return (
-    <form className='taskForm' onSubmit={(e) => saveTask(e, data)} >
-        <div>
+    <>
+        <Box
+            component="form"
+            sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}
+            
+            autoComplete="off"
+            onSubmit={(e) => saveTask(e, data)} 
+            >
             <div>
-                <label htmlFor='task'>Task</label>
-                <input 
-                    type='text'
-                    onChange={handleDataForm}
-                    id='task'
+                <TextField 
+                    required
+                    id="task" 
+                    label="Task" 
+                    variant="outlined" 
+                    size="small"
+                    onChange={(e: React.FormEvent) => handleDataForm}
                 />
             </div>
             <div>
-                <label htmlFor='description'>Description</label>
-                <input 
-                    type='text'
-                    onChange={handleDataForm}
-                    id='description'
+                <TextField 
+                    required
+                    id="description" 
+                    label="Description" 
+                    variant="outlined" 
+                    size="small"
+                    onChange={(e: React.FormEvent) => handleDataForm}
                 />
+
             </div>
-        </div>
-    <button disabled={data === undefined ? true : false}>Add Task</button>
-    </form>
+        </Box>
+        <Button variant="outlined" >Add Task</Button>
+</>
   )
 }
 

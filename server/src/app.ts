@@ -6,7 +6,7 @@ import taskRoutes from './routes';
 const app: Express = express();
 
 const corsOptions = {
-  origin: 'https://desafio-maisloot-todo-list.vercel.app',
+  origin: 'https://desafio-maisloot-todo-list.vercel.app/',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -24,7 +24,7 @@ mongoose.connect(uri, {
   } as ConnectOptions)
     .then(() => {
         app.listen(() => 
-            console.log(`Server running on https://desafio-maisloot-todo-list-server-7gqt5yfx9-ghlfernandes.vercel.app`)
+            console.log(`Server running on https://desafio-maisloot-todo-list-server.vercel.app/`)
         )
     })
     .catch(error => {

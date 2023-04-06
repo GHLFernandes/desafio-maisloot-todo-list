@@ -10,12 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(taskRoutes);
 
-const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@todo-list.ttjg8n4.mongodb.net/?retryWrites=true&w=majority`;
-
-// if (!process.env.MONGO_USER || !process.env.MONGO_PASSWORD || !process.env.MONGO_DB) {
-//     console.error('MongoDB environment variables not defined');
-//     process.exit(1);
-// }
+const uri: string = `mongodb+srv://gfernandes:7QYCowspdQwrv1WF@todo-list.ttjg8n4.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(uri, {
     useNewUrlParser: true,

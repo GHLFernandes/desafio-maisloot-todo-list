@@ -61,6 +61,8 @@ const AddTask: React.FC<Props> = ({ saveTask }) => {
           variant="outlined"
           onChange={handleDataForm}
           id="description"
+          multiline
+          rows={3}
         />
       </div>
       <Button disabled={isDataEmpty} type="submit" variant="contained">

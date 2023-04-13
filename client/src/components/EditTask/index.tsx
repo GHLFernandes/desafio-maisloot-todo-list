@@ -60,6 +60,8 @@ const EditTask: React.FC<Props> = ({ task, editTask, onClose }) => {
                     onChange={(e) => setDataDesc(e.target.value)}
                     value={dataDesc}
                     id="description"
+                    multiline
+                    rows={3}
                 />
             </div>
             <Button type="submit" variant="contained">

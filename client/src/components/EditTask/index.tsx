@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material';
 import React, { useState, useRef } from 'react';
 
 type Props = {
-  editTask: (e: React.FormEvent, formData: ITask | any) => void;
+  editTask: (formData: ITask | any) => void;
   task: ITask
 };
 

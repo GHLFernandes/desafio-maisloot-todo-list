@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Box, Button, Card, CardContent, Typography } from '@mui/material';
 import styled from 'styled-components';
+import EditTask from '../EditTask';
 
 type Props = TaskProps & {
   updateTask: (task: ITask) => void;
@@ -85,12 +86,7 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
         aria-describedby="modal-modal-description"
       >
       <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <EditTask task={task} editTask={editTask}/>
       </Box>
       </Modal>
     </>

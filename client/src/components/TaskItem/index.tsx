@@ -86,7 +86,12 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
         aria-describedby="modal-modal-description"
       >
       <Box sx={style}>
-        <EditTask task={task} editTask={editTask}/>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          Edit Task
+        </Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <EditTask task={task} editTask={editTask}/>
+        </Typography>
       </Box>
       </Modal>
     </>

@@ -21,7 +21,7 @@ const EditTask: React.FC<Props> = ({ task, editTask }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    editTask(e, data);
+    editTask(data);
     setData({ ...data, task: '', description: '' });
     formRef.current?.reset();
   };

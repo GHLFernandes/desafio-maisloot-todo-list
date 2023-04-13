@@ -8,12 +8,15 @@ type Props = {
 
 const EditTask: React.FC<Props> = ({ task, editTask }) => {
   const [data, setData] = useState<ITask | {}>({});
+  const [dataTask, setDataTask] = useState<string>(task.task);
+  const [dataDesc, setDataDesc] = useState<string>(task.description);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleDataForm: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
     setData({
       ...data,
-      [e.currentTarget.id]: e.currentTarget.value,
+      task: dataTask,
+      description: dataDesc
     });
   };
 
@@ -46,8 +49,8 @@ const EditTask: React.FC<Props> = ({ task, editTask }) => {
         <TextField
           label="Task"
           variant="outlined"
-          onChange={handleDataForm}
-          value={task.task}
+          onChange={e => setDataTask(e.target.value)}
+          value={dataTask}
           id="task"
         />
       </div>
@@ -61,8 +64,8 @@ const EditTask: React.FC<Props> = ({ task, editTask }) => {
         <TextField
           label="Description"
           variant="outlined"
-          onChange={handleDataForm}
-          value={task.description}
+          onChange={e => setDataDesc(e.target.value)}
+          value={dataDesc}
           id="description"
         />
       </div>

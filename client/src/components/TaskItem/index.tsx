@@ -67,7 +67,10 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
                 <></>
               ) : (
                 <>
-                  <Button onClick={handleEditClick} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
+                  <Button onClick={handleEditClick} 
+                    variant="outlined" 
+                    sx={{ marginLeft: '20px', marginRight: '20px', marginTop: '20px' }}
+                    >
                     Edit
                   </Button>
                   <Button

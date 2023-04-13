@@ -12,8 +12,6 @@ const EditTask: React.FC<Props> = ({ task, editTask }) => {
   const [dataDesc, setDataDesc] = useState<string>(task.description);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const isDataEmpty = Object.keys(data).length === 0;
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setData({
@@ -66,7 +64,7 @@ const EditTask: React.FC<Props> = ({ task, editTask }) => {
           id="description"
         />
       </div>
-      <Button disabled={isDataEmpty} type="submit" variant="contained">
+      <Button type="submit" variant="contained">
         Edit Task
       </Button>
     </form>

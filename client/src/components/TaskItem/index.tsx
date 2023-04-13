@@ -66,18 +66,20 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
               {task.status ? (
                 <></>
               ) : (
-                <Button
-                  onClick={handleDoneClick}
-                  variant="contained"
-                  className="done-btn"
-                  sx={{ marginRight: '20px', marginTop: '20px' }}
-                >
-                  Done
-                </Button>
+                <>
+                  <Button onClick={handleEditClick} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={handleDoneClick}
+                    variant="contained"
+                    className="done-btn"
+                    sx={{ marginRight: '20px', marginTop: '20px' }}
+                  >
+                    Done
+                  </Button>
+                </>
               )}
-              <Button onClick={handleEditClick} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
-                Edit
-              </Button>
               <Button onClick={handleDeleteClick} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
                 Delete
               </Button>

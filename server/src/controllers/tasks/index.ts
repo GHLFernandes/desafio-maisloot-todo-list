@@ -55,6 +55,22 @@ const updateTask = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
+const editTask = async (req: Request, res: Response): Promise<void> => {
+    try{
+        const { params: {id}, body } = req;
+        const updatedTask: ITask | null = await Task.findByIdAndUpdate({_id: id}, body);
+        const allTasks: ITask[] = await Task.find();
+
+        res.status(200).json({
+            message: "Task Updated",
+            task: updatedTask,
+            tasks: allTasks,
+        });
+    }catch(error){
+        throw error;
+    }
+}
+
 const deleteTask = async (req: Request, res: Response): Promise<void> => {
     try{
         const deletedTask: ITask | null = await Task.findByIdAndRemove(req.params.id);
@@ -70,4 +86,4 @@ const deleteTask = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
-export { getTasks, addTask, updateTask, deleteTask };
+export { getTasks, addTask, updateTask, deleteTask, editTask };

@@ -44,7 +44,8 @@ export const updateTask = async (task: ITask): Promise<AxiosResponse<ApiData>> =
 
 export const editTask = async (task: ITask): Promise<AxiosResponse<ApiData>> => {
     try{
-        const taskToUpdate: Omit<ITask, '_id'> = {
+        const taskToUpdate: Omit<ITask, 'createdAt'> = {
+            _id: task._id,
             task: task.task,
             description: task.description,
             status: task.status,

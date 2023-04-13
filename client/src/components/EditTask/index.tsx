@@ -12,18 +12,15 @@ const EditTask: React.FC<Props> = ({ task, editTask }) => {
   const [dataDesc, setDataDesc] = useState<string>(task.description);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleDataForm: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
-    setData({
-      ...data,
-      task: dataTask,
-      description: dataDesc
-    });
-  };
-
   const isDataEmpty = Object.keys(data).length === 0;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setData({
+        ...data,
+        task: dataTask,
+        description: dataDesc
+      });
     editTask(data);
     setData({ ...data, task: '', description: '' });
     formRef.current?.reset();

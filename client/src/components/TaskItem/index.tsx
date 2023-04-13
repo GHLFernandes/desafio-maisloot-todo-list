@@ -27,31 +27,38 @@ const style = {
 
 const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) => {
   const [isDone, setIsDone] = useState<boolean>(task.status);
-  const [open, setOpen] = React.useState(false);
-  const checkTask: string = task.status ? 'done' : '';
-  
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setIsDone(task.status);
   }, [task.status]);
 
-  const handleEditTask = (task: ITask) => {
+  const handleDoneClick = () => {
+    updateTask({ ...task, status: true });
+  };
+
+  const handleEditClick = () => {
     setOpen(true);
-    editTask(task);
-    
-  }
+  };
+
+  const handleDeleteClick = () => {
+    deleteTask(task._id);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
-      <TaskCard status={task.status}>
+       <TaskCard status={task.status}>
         <Card variant="outlined" sx={{ maxWidth: 500, my: 2 }}>
           <CardContent>
             <div className="txt">
-              <Typography variant="h5" component="h2" className={checkTask}>
+              <Typography variant="h5" component="h2" className={task.status ? 'done-text' : ''}>
                 {task.task}
               </Typography>
-              <Typography variant="body2" component="p" className={checkTask}>
+              <Typography variant="body2" component="p" className={task.status ? 'done-text' : ''}>
                 {task.description}
               </Typography>
             </div>
@@ -60,7 +67,7 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
                 <></>
               ) : (
                 <Button
-                  onClick={() => updateTask(task)}
+                  onClick={handleDoneClick}
                   variant="contained"
                   className="done-btn"
                   sx={{ marginRight: '20px', marginTop: '20px' }}
@@ -68,10 +75,10 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
                   Done
                 </Button>
               )}
-              <Button onClick={() => handleEditTask(task)} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
+              <Button onClick={handleEditClick} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
                 Edit
               </Button>
-              <Button onClick={() => deleteTask(task._id)} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
+              <Button onClick={handleDeleteClick} variant="outlined" sx={{ marginLeft: '20px', marginTop: '20px' }}>
                 Delete
               </Button>
             </div>
@@ -85,14 +92,14 @@ const TaskItem: React.FC<Props> = ({ task, updateTask, deleteTask, editTask }) =
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Edit Task
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <EditTask task={task} editTask={editTask}/>
-        </Typography>
-      </Box>
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Edit Task
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <EditTask task={task} editTask={editTask} onClose={handleClose} />
+          </Typography>
+        </Box>
       </Modal>
     </>
   );

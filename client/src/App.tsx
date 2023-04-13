@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TaskItem from './components/TaskItem';
 import AddTask from './components/AddTask';
-import { getTasks, addTask, updateTask, deleteTask } from './api';
+import { getTasks, addTask, updateTask, deleteTask, editTask } from './api';
 import { Container, Typography } from '@mui/material';
 
 const App: React.FC = () => {
@@ -41,6 +41,17 @@ const App: React.FC = () => {
       .catch(error => console.log(error));
   };
 
+  const handleEditTask = (task: ITask): void => {
+    editTask(task)
+      .then(({status, data}) => {
+        if(status !== 200){
+          throw new Error('Error! Task not updated!');
+        }
+      setTasks(data.tasks);
+      })
+      .catch(error => console.log(error));
+  };
+
   const handleDeleteTask = (_id: string): void => {
     deleteTask(_id)
       .then(({status, data}) => {
@@ -65,6 +76,7 @@ const App: React.FC = () => {
             key={task._id}
             updateTask={handleUpdateTask}
             deleteTask={handleDeleteTask}
+            editTask={handleEditTask}
             task={task}
           />
         ))

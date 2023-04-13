@@ -29,7 +29,7 @@ const EditTask: React.FC<Props> = ({ task, editTask, onClose }) => {
                 flexDirection: 'column',
                 alignItems: 'center',
             }}
-            onSubmit={(e) => handleSubmit(e, task)}
+            onSubmit={(e) => handleSubmit(e, {...task, task: dataTask, description: dataDesc})}
             ref={formRef}
         >
             <div

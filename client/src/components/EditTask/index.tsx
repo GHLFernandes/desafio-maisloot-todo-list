@@ -14,11 +14,10 @@ const EditTask: React.FC<Props> = ({ task, editTask, onClose }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>, task: ITask) => {
         e.preventDefault();
-        const updatedData = { task: dataTask, description: dataDesc };
         editTask(task);
         setDataTask('');
         setDataDesc('');
-        onClose(); // chamada da função onClose
+        onClose();
         formRef.current?.reset();
     };
 
